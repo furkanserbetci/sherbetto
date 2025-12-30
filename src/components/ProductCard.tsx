@@ -36,14 +36,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.description}
         </p>
 
-        {/* Price & CTA */}
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-2xl font-bold text-[var(--accent)]">
-              {product.price} ₺
-            </span>
-            <span className="text-gray-500 text-sm ml-1">/ {product.unit}</span>
-          </div>
+        {/* CTA */}
+        <div className="flex items-center justify-end">
           <a
             href={whatsappLink}
             target="_blank"
