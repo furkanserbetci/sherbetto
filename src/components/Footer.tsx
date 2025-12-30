@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,9 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <span className="font-[family-name:var(--font-signature)] text-4xl text-white block mb-6">
-              Sherbetto
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Sherbetto"
+              width={180}
+              height={60}
+              className="h-12 w-auto brightness-0 invert mb-6"
+            />
             <p className="text-gray-300 mb-4 max-w-md">
               Doğallığın ve Kalitenin Lezzet Dokunuşu. Geleneksel Türk tatlıları,
               en kaliteli malzemelerle özenle hazırlanır.
