@@ -7,15 +7,21 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative bg-[var(--primary)] text-white overflow-hidden min-h-[90vh] flex items-center">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/products/kunefe.jpg"
-          alt="Künefe"
-          fill
-          className="object-cover"
-          priority
-        />
+      {/* Background Image with Slow Zoom */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            src="/images/products/kunefe.jpg"
+            alt="Künefe"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
