@@ -1,28 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-b from-[var(--primary)] to-[#0a0a0a] text-white overflow-hidden min-h-[90vh] flex items-center">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: "60px 60px",
-          }}
+    <section className="relative bg-[var(--primary)] text-white overflow-hidden min-h-[90vh] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/products/kunefe.jpg"
+          alt="Künefe"
+          fill
+          className="object-cover"
+          priority
         />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
 
       {/* Floating decorative elements */}
@@ -46,18 +41,6 @@ export default function Hero() {
         }}
         transition={{
           duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/4 w-16 h-16 bg-white rounded-full opacity-5 blur-xl"
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -15, 0],
-        }}
-        transition={{
-          duration: 6,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -107,7 +90,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
+            className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
           >
             En kaliteli malzemelerle, geleneksel tariflerle hazırlanan Türk tatlıları.
             Baklava, künefe, kadayıf ve daha fazlası.
@@ -162,7 +145,7 @@ export default function Hero() {
                 <div className="text-3xl md:text-4xl font-bold text-[var(--accent)]">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
+                <div className="text-sm text-gray-300 mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
