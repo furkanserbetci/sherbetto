@@ -11,9 +11,9 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="Sherbetto"
-              width={180}
-              height={60}
-              className="h-12 w-auto brightness-0 invert mb-6"
+              width={250}
+              height={80}
+              className="h-16 w-auto brightness-0 invert mb-6"
             />
             <p className="text-gray-300 mb-4 max-w-md">
               Doğallığın ve Kalitenin Lezzet Dokunuşu. Geleneksel Türk tatlıları,

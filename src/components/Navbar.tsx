@@ -23,9 +23,9 @@ export default function Navbar() {
             <Image
               src="/images/logo.png"
               alt="Sherbetto"
-              width={180}
-              height={60}
-              className="h-12 md:h-14 w-auto"
+              width={250}
+              height={80}
+              className="h-16 md:h-20 w-auto"
               priority
             />
           </Link>
