@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/data/products";
 
 interface ProductCardProps {
@@ -11,8 +12,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden border border-[var(--border-light)] hover:border-[var(--accent-light)] hover:shadow-xl transition-all duration-500 group">
-      {/* Image Container */}
-      <div className="relative h-56 overflow-hidden bg-gray-100">
+      {/* Image Container - Clickable */}
+      <Link href={`/urunler/${product.id}`} className="block relative h-56 overflow-hidden bg-gray-100">
         <Image
           src={product.image}
           alt={product.name}
@@ -25,19 +26,30 @@ export default function ProductCard({ product }: ProductCardProps) {
             Öne Çıkan
           </span>
         )}
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold text-[var(--primary)] mb-2 tracking-tight">
-          {product.name}
-        </h3>
-        <p className="text-[var(--foreground-muted)] text-sm mb-5 line-clamp-2 leading-relaxed">
+        <Link href={`/urunler/${product.id}`}>
+          <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold text-[var(--primary)] mb-2 tracking-tight hover:text-[var(--accent)] transition-colors">
+            {product.name}
+          </h3>
+        </Link>
+        <p className="text-[var(--foreground-muted)] text-sm mb-3 line-clamp-2 leading-relaxed">
           {product.description}
         </p>
 
         {/* CTA */}
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between gap-2">
+          <Link
+            href={`/urunler/${product.id}`}
+            className="text-[var(--primary)] hover:text-[var(--accent)] text-sm font-medium transition-colors flex items-center gap-1"
+          >
+            Detaylar
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
           <a
             href={whatsappLink}
             target="_blank"

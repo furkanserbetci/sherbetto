@@ -1,0 +1,57 @@
+{
+  "common": {
+    "home": "Anasayfa",
+    "products": "Ürünler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "blog": "Blog",
+    "cart": "Sepet",
+    "order": "Sipariş Ver",
+    "search": "Ara",
+    "loading": "Yükleniyor...",
+    "readMore": "Devamını Oku",
+    "viewAll": "Tümünü Görüntüle"
+  },
+  "hero": {
+    "title": "Doğallığın ve Kalitenin Lezzet Dokunuşu",
+    "subtitle": "Geleneksel Türk tatlıları, en taze malzemelerle sizin için hazırlanıyor",
+    "exploreProducts": "Ürünleri Keşfet",
+    "orderNow": "Hemen Sipariş Ver"
+  },
+  "products": {
+    "title": "Ürünlerimiz",
+    "featured": "Öne Çıkan",
+    "all": "Tümü",
+    "baklava": "Baklava",
+    "kunefe": "Künefe",
+    "kadayif": "Kadayıf",
+    "other": "Diğer",
+    "addToCart": "Sepete Ekle",
+    "details": "Detaylar",
+    "noProducts": "Bu kategoride ürün bulunamadı"
+  },
+  "cart": {
+    "title": "Sepetiniz",
+    "empty": "Sepetiniz boş",
+    "total": "Toplam",
+    "checkout": "Sipariş Ver",
+    "clear": "Sepeti Temizle",
+    "remove": "Kaldır"
+  },
+  "contact": {
+    "title": "İletişim",
+    "name": "Adınız Soyadınız",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "message": "Mesajınız",
+    "send": "Mesaj Gönder",
+    "success": "Mesajınız gönderildi!"
+  },
+  "footer": {
+    "description": "Geleneksel Türk tatlılarının en lezzetli adresi",
+    "quickLinks": "Hızlı Linkler",
+    "contact": "İletişim",
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır"
+  }
+}

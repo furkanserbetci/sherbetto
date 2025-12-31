@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import CartButton from "./CartButton";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Anasayfa" },
     { href: "/urunler", label: "Ürünler" },
+    { href: "/blog", label: "Blog" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "/iletisim", label: "İletişim" },
   ];
@@ -41,6 +44,8 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <SearchBar />
+            <CartButton />
             <a
               href="https://wa.me/905384507730"
               target="_blank"
@@ -51,12 +56,15 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-[var(--foreground)]"
-            aria-label="Menü"
-          >
+          {/* Mobile Cart & Menu */}
+          <div className="flex items-center gap-2 md:hidden">
+            <SearchBar />
+            <CartButton />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-[var(--foreground)]"
+              aria-label="Menü"
+            >
             <svg
               className="h-6 w-6"
               fill="none"
@@ -73,6 +81,7 @@ export default function Navbar() {
               )}
             </svg>
           </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

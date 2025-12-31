@@ -1,0 +1,57 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "cart": "Cart",
+    "order": "Order Now",
+    "search": "Search",
+    "loading": "Loading...",
+    "readMore": "Read More",
+    "viewAll": "View All"
+  },
+  "hero": {
+    "title": "The Taste of Nature and Quality",
+    "subtitle": "Traditional Turkish desserts, prepared with the freshest ingredients just for you",
+    "exploreProducts": "Explore Products",
+    "orderNow": "Order Now"
+  },
+  "products": {
+    "title": "Our Products",
+    "featured": "Featured",
+    "all": "All",
+    "baklava": "Baklava",
+    "kunefe": "Künefe",
+    "kadayif": "Kadayıf",
+    "other": "Other",
+    "addToCart": "Add to Cart",
+    "details": "Details",
+    "noProducts": "No products found in this category"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Checkout",
+    "clear": "Clear Cart",
+    "remove": "Remove"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Your Name",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Your Message",
+    "send": "Send Message",
+    "success": "Your message has been sent!"
+  },
+  "footer": {
+    "description": "The most delicious destination for traditional Turkish desserts",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved"
+  }
+}

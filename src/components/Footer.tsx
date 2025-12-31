@@ -4,16 +4,16 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-[var(--primary)] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <Image
-              src="/images/logo.png"
+              src="/images/logo-footer.png"
               alt="Sherbetto"
-              width={250}
-              height={80}
-              className="h-16 w-auto brightness-0 invert mb-6"
+              width={327}
+              height={187}
+              className="h-16 w-auto brightness-0 invert mb-4"
             />
             <p className="text-gray-300 mb-4 max-w-md">
               Doğallığın ve Kalitenin Lezzet Dokunuşu. Geleneksel Türk tatlıları,
