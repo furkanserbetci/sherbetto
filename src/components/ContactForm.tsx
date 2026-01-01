@@ -41,12 +41,10 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    const whatsappMessage = `Yeni Mesaj:\n\nAd: ${data.name}\nTelefon: ${data.phone}${data.email ? `\nE-posta: ${data.email}` : ""}\n\nMesaj: ${data.message}`;
+    const subject = `Sherbetto İletişim Formu - ${data.name}`;
+    const body = `Ad: ${data.name}\nTelefon: ${data.phone}${data.email ? `\nE-posta: ${data.email}` : ""}\n\nMesaj:\n${data.message}`;
 
-    window.open(
-      `https://wa.me/905384507730?text=${encodeURIComponent(whatsappMessage)}`,
-      "_blank"
-    );
+    window.location.href = `mailto:sherbettokunefe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     setIsSuccess(true);
     reset();
@@ -68,7 +66,7 @@ export default function ContactForm() {
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
               errors.name ? "border-red-500" : "border-gray-300"
             }`}
-            placeholder="Örnek: Ahmet Yılmaz"
+            placeholder="Adınız Soyadınız"
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
@@ -87,7 +85,7 @@ export default function ContactForm() {
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
               errors.phone ? "border-red-500" : "border-gray-300"
             }`}
-            placeholder="0532 XXX XX XX"
+            placeholder="Telefon numaranız"
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
@@ -107,7 +105,7 @@ export default function ContactForm() {
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
             errors.email ? "border-red-500" : "border-gray-300"
           }`}
-          placeholder="ornek@email.com"
+          placeholder="E-posta adresiniz"
         />
         {errors.email && (
           <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
@@ -126,7 +124,7 @@ export default function ContactForm() {
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all resize-none ${
             errors.message ? "border-red-500" : "border-gray-300"
           }`}
-          placeholder="Sipariş vermek veya bilgi almak istediğiniz konuyu yazın..."
+          placeholder="Mesajınız..."
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
@@ -176,7 +174,7 @@ export default function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
           <p className="text-green-700 font-medium">
-            Mesajınız WhatsApp üzerinden iletildi!
+            E-posta uygulamanız açıldı!
           </p>
         </div>
       )}
