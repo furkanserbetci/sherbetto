@@ -154,7 +154,7 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
+        <link rel="icon" href="/icon.png?v=2" type="image/png" sizes="512x512" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
