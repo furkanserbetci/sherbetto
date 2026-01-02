@@ -31,7 +31,7 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
-const siteUrl = "https://sherbetto.com.tr";
+const siteUrl = "https://sherbettokunefe.com";
 
 interface Props {
   children: React.ReactNode;

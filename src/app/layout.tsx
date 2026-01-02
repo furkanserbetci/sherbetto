@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sherbetto.com.tr"),
+  metadataBase: new URL("https://sherbettokunefe.com"),
 };
 
 export default function RootLayout({
