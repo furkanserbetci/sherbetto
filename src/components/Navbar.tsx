@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import CartButton from "./CartButton";
 import SearchBar from "./SearchBar";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "./LocaleProvider";
@@ -48,7 +47,6 @@ export default function Navbar() {
               </Link>
             ))}
             <SearchBar />
-            <CartButton />
             <LanguageSwitcher />
             <a
               href="https://wa.me/905384507730"
@@ -63,7 +61,6 @@ export default function Navbar() {
           {/* Mobile Cart & Menu */}
           <div className={`flex items-center gap-2 md:hidden ${isRTL ? "flex-row-reverse" : ""}`}>
             <SearchBar />
-            <CartButton />
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}

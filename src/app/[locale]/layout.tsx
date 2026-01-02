@@ -5,7 +5,6 @@ import { Locale, locales, isRTL, getDictionary } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import CartDrawer from "@/components/CartDrawer";
 import Analytics from "@/components/Analytics";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import PageTracker from "@/components/PageTracker";
@@ -209,7 +208,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppButton />
-        <CartDrawer />
       </LocaleProvider>
       <ServiceWorkerRegistration />
       <PageTracker />
