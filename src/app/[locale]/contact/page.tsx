@@ -1,22 +1,77 @@
-import { Metadata } from "next";
+"use client";
+
 import ContactForm from "@/components/ContactForm";
+import { useLocale } from "@/components/LocaleProvider";
 
-export const metadata: Metadata = {
-  title: "İletişim | Sherbetto",
-  description: "Sherbetto ile iletişime geçin. Sipariş, soru ve önerileriniz için bize ulaşın.",
-};
+export default function ContactPage() {
+  const { locale, t, isRTL } = useLocale();
 
-export default function IletisimPage() {
+  const texts = {
+    tr: {
+      pageTitle: "İletişim",
+      pageSubtitle: "Sipariş vermek veya bilgi almak için bize ulaşın",
+      formTitle: "Bize Mesaj Gönderin",
+      infoTitle: "İletişim Bilgileri",
+      whatsapp: "WhatsApp",
+      whatsappDesc: "Hızlı sipariş için tıklayın",
+      phone: "Telefon",
+      email: "E-posta",
+      emailDesc: "Mail gönderin",
+      address: "Adres",
+      addressDesc: "Haritada görüntüle",
+      instagram: "Instagram",
+      instagramDesc: "Bizi takip edin",
+      workingHours: "Çalışma Saatleri",
+      everyday: "Her Gün",
+    },
+    en: {
+      pageTitle: "Contact",
+      pageSubtitle: "Contact us to place an order or get information",
+      formTitle: "Send Us a Message",
+      infoTitle: "Contact Information",
+      whatsapp: "WhatsApp",
+      whatsappDesc: "Click for quick order",
+      phone: "Phone",
+      email: "Email",
+      emailDesc: "Send email",
+      address: "Address",
+      addressDesc: "View on map",
+      instagram: "Instagram",
+      instagramDesc: "Follow us",
+      workingHours: "Working Hours",
+      everyday: "Every Day",
+    },
+    ar: {
+      pageTitle: "اتصل بنا",
+      pageSubtitle: "تواصل معنا للطلب أو للاستفسار",
+      formTitle: "أرسل لنا رسالة",
+      infoTitle: "معلومات الاتصال",
+      whatsapp: "واتساب",
+      whatsappDesc: "اضغط للطلب السريع",
+      phone: "الهاتف",
+      email: "البريد الإلكتروني",
+      emailDesc: "أرسل بريداً",
+      address: "العنوان",
+      addressDesc: "عرض على الخريطة",
+      instagram: "انستغرام",
+      instagramDesc: "تابعنا",
+      workingHours: "ساعات العمل",
+      everyday: "كل يوم",
+    },
+  };
+
+  const content = texts[locale] || texts.tr;
+
   return (
     <>
       {/* Page Header */}
       <section className="bg-[var(--primary)] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${isRTL ? "rtl" : ""}`}>
           <h1 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-bold mb-4">
-            İletişim
+            {content.pageTitle}
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Sipariş vermek veya bilgi almak için bize ulaşın
+            {content.pageSubtitle}
           </p>
         </div>
       </section>
@@ -24,11 +79,11 @@ export default function IletisimPage() {
       {/* Contact Section */}
       <section className="py-20 bg-[var(--background)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 ${isRTL ? "rtl" : ""}`}>
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <h2 className="font-[family-name:var(--font-cormorant)] text-2xl font-bold text-[var(--primary)] mb-6">
-                Bize Mesaj Gönderin
+                {content.formTitle}
               </h2>
               <ContactForm />
             </div>
@@ -36,7 +91,7 @@ export default function IletisimPage() {
             {/* Contact Info */}
             <div>
               <h2 className="font-[family-name:var(--font-cormorant)] text-2xl font-bold text-[var(--primary)] mb-6">
-                İletişim Bilgileri
+                {content.infoTitle}
               </h2>
 
               <div className="space-y-6">
@@ -53,9 +108,9 @@ export default function IletisimPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--primary)] mb-1">WhatsApp</h3>
+                    <h3 className="font-semibold text-[var(--primary)] mb-1">{content.whatsapp}</h3>
                     <p className="text-gray-600">0538 450 77 30</p>
-                    <p className="text-sm text-[var(--accent)]">Hızlı sipariş için tıklayın</p>
+                    <p className="text-sm text-[var(--accent)]">{content.whatsappDesc}</p>
                   </div>
                 </a>
 
@@ -70,9 +125,9 @@ export default function IletisimPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--primary)] mb-1">Telefon</h3>
+                    <h3 className="font-semibold text-[var(--primary)] mb-1">{content.phone}</h3>
                     <p className="text-gray-600">0324 357 30 00</p>
-                    <p className="text-sm text-gray-500">Her Gün: 08:00 - 02:00</p>
+                    <p className="text-sm text-gray-500">{content.everyday}: 08:00 - 02:00</p>
                   </div>
                 </a>
 
@@ -87,9 +142,9 @@ export default function IletisimPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--primary)] mb-1">E-posta</h3>
+                    <h3 className="font-semibold text-[var(--primary)] mb-1">{content.email}</h3>
                     <p className="text-gray-600">sherbettokunefe@gmail.com</p>
-                    <p className="text-sm text-[var(--accent)]">Mail gönderin</p>
+                    <p className="text-sm text-[var(--accent)]">{content.emailDesc}</p>
                   </div>
                 </a>
 
@@ -107,9 +162,9 @@ export default function IletisimPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--primary)] mb-1">Adres</h3>
+                    <h3 className="font-semibold text-[var(--primary)] mb-1">{content.address}</h3>
                     <p className="text-gray-600">Mersin, Türkiye</p>
-                    <p className="text-sm text-[var(--accent)]">Haritada görüntüle</p>
+                    <p className="text-sm text-[var(--accent)]">{content.addressDesc}</p>
                   </div>
                 </a>
 
@@ -126,19 +181,19 @@ export default function IletisimPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--primary)] mb-1">Instagram</h3>
+                    <h3 className="font-semibold text-[var(--primary)] mb-1">{content.instagram}</h3>
                     <p className="text-gray-600">@sherbettokunefe</p>
-                    <p className="text-sm text-[var(--accent)]">Bizi takip edin</p>
+                    <p className="text-sm text-[var(--accent)]">{content.instagramDesc}</p>
                   </div>
                 </a>
               </div>
 
               {/* Working Hours */}
               <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
-                <h3 className="font-semibold text-[var(--primary)] mb-4">Çalışma Saatleri</h3>
+                <h3 className="font-semibold text-[var(--primary)] mb-4">{content.workingHours}</h3>
                 <div className="space-y-2 text-gray-600">
                   <div className="flex justify-between">
-                    <span>Her Gün</span>
+                    <span>{content.everyday}</span>
                     <span className="font-medium">08:00 - 02:00</span>
                   </div>
                 </div>
@@ -152,7 +207,6 @@ export default function IletisimPage() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-200 rounded-2xl overflow-hidden h-96">
-            {/* Google Maps embed - Sherbetto Künefe, Mersin */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3190.5!2d34.5345135!3d36.744835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15278a433921a985%3A0x91c9bbd2192a3fce!2sSherbetto%20K%C3%BCnefe!5e0!3m2!1str!2str!4v1704000000000"
               width="100%"
@@ -161,7 +215,7 @@ export default function IletisimPage() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Sherbetto Konum"
+              title="Sherbetto Location"
             />
           </div>
         </div>

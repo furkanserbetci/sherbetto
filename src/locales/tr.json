@@ -13,14 +13,20 @@
     "viewAll": "Tümünü Görüntüle"
   },
   "hero": {
+    "badge": "Geleneksel Lezzetler",
     "title": "Doğallığın ve Kalitenin Lezzet Dokunuşu",
     "subtitle": "Geleneksel Türk tatlıları, en taze malzemelerle sizin için hazırlanıyor",
     "exploreProducts": "Ürünleri Keşfet",
-    "orderNow": "Hemen Sipariş Ver"
+    "orderNow": "Hemen Sipariş Ver",
+    "stats": {
+      "experience": "Yıllık Deneyim",
+      "products": "Ürün Çeşidi",
+      "customers": "Mutlu Müşteri"
+    }
   },
   "products": {
     "title": "Ürünlerimiz",
-    "featured": "Öne Çıkan",
+    "featured": "Öne Çıkan Ürünlerimiz",
     "all": "Tümü",
     "baklava": "Baklava",
     "kunefe": "Künefe",
@@ -36,7 +42,10 @@
     "total": "Toplam",
     "checkout": "Sipariş Ver",
     "clear": "Sepeti Temizle",
-    "remove": "Kaldır"
+    "remove": "Kaldır",
+    "orderSummary": "Sipariş Özeti",
+    "exploreProducts": "Ürünleri Keşfet",
+    "orderViaWhatsapp": "WhatsApp ile Sipariş Ver"
   },
   "contact": {
     "title": "İletişim",
@@ -45,7 +54,9 @@
     "email": "E-posta",
     "message": "Mesajınız",
     "send": "Mesaj Gönder",
-    "success": "Mesajınız gönderildi!"
+    "success": "Mesajınız gönderildi!",
+    "optional": "opsiyonel",
+    "sending": "Gönderiliyor..."
   },
   "footer": {
     "description": "Geleneksel Türk tatlılarının en lezzetli adresi",
@@ -53,5 +64,31 @@
     "contact": "İletişim",
     "followUs": "Bizi Takip Edin",
     "rights": "Tüm hakları saklıdır"
+  },
+  "navbar": {
+    "menu": "Menü",
+    "closeMenu": "Menüyü Kapat"
+  },
+  "whyUs": {
+    "title": "Neden Sherbetto?",
+    "subtitle": "Farkımız",
+    "feature1Title": "%100 Doğal Malzeme",
+    "feature1Desc": "Tüm ürünlerimizde en kaliteli ve doğal malzemeler kullanılır. Katkı maddesi yoktur.",
+    "feature2Title": "Günlük Taze Üretim",
+    "feature2Desc": "Her gün taze taze üretim yapılır. Siparişleriniz en taze haliyle elinize ulaşır.",
+    "feature3Title": "Hızlı Teslimat",
+    "feature3Desc": "Mersin ve çevre illere aynı gün teslimat. Özenli paketleme ile güvenli ulaşım."
+  },
+  "cta": {
+    "title": "Siparişleriniz İçin Bizi Arayın",
+    "subtitle": "WhatsApp üzerinden kolayca sipariş verebilir, sorularınızı sorabilirsiniz."
+  },
+  "validation": {
+    "nameMin": "İsim en az 2 karakter olmalıdır",
+    "nameMax": "İsim en fazla 50 karakter olabilir",
+    "phoneInvalid": "Geçerli bir telefon numarası girin",
+    "emailInvalid": "Geçerli bir e-posta adresi girin",
+    "messageMin": "Mesaj en az 10 karakter olmalıdır",
+    "messageMax": "Mesaj en fazla 500 karakter olabilir"
   }
 }

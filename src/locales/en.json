@@ -13,14 +13,20 @@
     "viewAll": "View All"
   },
   "hero": {
+    "badge": "Traditional Flavors",
     "title": "The Taste of Nature and Quality",
     "subtitle": "Traditional Turkish desserts, prepared with the freshest ingredients just for you",
     "exploreProducts": "Explore Products",
-    "orderNow": "Order Now"
+    "orderNow": "Order Now",
+    "stats": {
+      "experience": "Years Experience",
+      "products": "Product Varieties",
+      "customers": "Happy Customers"
+    }
   },
   "products": {
     "title": "Our Products",
-    "featured": "Featured",
+    "featured": "Featured Products",
     "all": "All",
     "baklava": "Baklava",
     "kunefe": "Künefe",
@@ -36,7 +42,10 @@
     "total": "Total",
     "checkout": "Checkout",
     "clear": "Clear Cart",
-    "remove": "Remove"
+    "remove": "Remove",
+    "orderSummary": "Order Summary",
+    "exploreProducts": "Explore Products",
+    "orderViaWhatsapp": "Order via WhatsApp"
   },
   "contact": {
     "title": "Contact",
@@ -45,7 +54,9 @@
     "email": "Email",
     "message": "Your Message",
     "send": "Send Message",
-    "success": "Your message has been sent!"
+    "success": "Your message has been sent!",
+    "optional": "optional",
+    "sending": "Sending..."
   },
   "footer": {
     "description": "The most delicious destination for traditional Turkish desserts",
@@ -53,5 +64,31 @@
     "contact": "Contact",
     "followUs": "Follow Us",
     "rights": "All rights reserved"
+  },
+  "navbar": {
+    "menu": "Menu",
+    "closeMenu": "Close Menu"
+  },
+  "whyUs": {
+    "title": "Why Sherbetto?",
+    "subtitle": "Our Difference",
+    "feature1Title": "100% Natural Ingredients",
+    "feature1Desc": "We use only the finest natural ingredients in all our products. No additives.",
+    "feature2Title": "Fresh Daily Production",
+    "feature2Desc": "We produce fresh every day. Your orders arrive at their freshest.",
+    "feature3Title": "Fast Delivery",
+    "feature3Desc": "Same-day delivery to Mersin and surrounding areas. Careful packaging for safe delivery."
+  },
+  "cta": {
+    "title": "Call Us for Orders",
+    "subtitle": "You can easily order via WhatsApp and ask your questions."
+  },
+  "validation": {
+    "nameMin": "Name must be at least 2 characters",
+    "nameMax": "Name cannot exceed 50 characters",
+    "phoneInvalid": "Enter a valid phone number",
+    "emailInvalid": "Enter a valid email address",
+    "messageMin": "Message must be at least 10 characters",
+    "messageMax": "Message cannot exceed 500 characters"
   }
 }

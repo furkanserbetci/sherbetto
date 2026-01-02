@@ -5,24 +5,27 @@ import Image from "next/image";
 import { useState } from "react";
 import CartButton from "./CartButton";
 import SearchBar from "./SearchBar";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale } from "./LocaleProvider";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { locale, t, isRTL } = useLocale();
 
   const navLinks = [
-    { href: "/", label: "Anasayfa" },
-    { href: "/urunler", label: "Ürünler" },
-    { href: "/blog", label: "Blog" },
-    { href: "/hakkimizda", label: "Hakkımızda" },
-    { href: "/iletisim", label: "İletişim" },
+    { href: `/${locale}`, label: t("common.home") },
+    { href: `/${locale}/products`, label: t("common.products") },
+    { href: `/${locale}/blog`, label: t("common.blog") },
+    { href: `/${locale}/about`, label: t("common.about") },
+    { href: `/${locale}/contact`, label: t("common.contact") },
   ];
 
   return (
     <nav className="bg-white/95 backdrop-blur-md border-b border-[var(--border-light)] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className={`flex justify-between items-center h-20 ${isRTL ? "flex-row-reverse" : ""}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href={`/${locale}`} className="flex items-center">
             <Image
               src="/images/logo.png"
               alt="Sherbetto"
@@ -34,7 +37,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className={`hidden md:flex items-center ${isRTL ? "space-x-reverse space-x-8" : "space-x-8"}`}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -46,24 +49,26 @@ export default function Navbar() {
             ))}
             <SearchBar />
             <CartButton />
+            <LanguageSwitcher />
             <a
               href="https://wa.me/905384507730"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-6 py-2.5 rounded-full font-medium transition-colors duration-200"
             >
-              Sipariş Ver
+              {t("common.order")}
             </a>
           </div>
 
           {/* Mobile Cart & Menu */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className={`flex items-center gap-2 md:hidden ${isRTL ? "flex-row-reverse" : ""}`}>
             <SearchBar />
             <CartButton />
+            <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-[var(--foreground)]"
-              aria-label="Menü"
+              aria-label={isOpen ? t("navbar.closeMenu") || "Close menu" : t("navbar.menu") || "Menu"}
             >
             <svg
               className="h-6 w-6"
@@ -87,7 +92,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-3">
+            <div className={`flex flex-col space-y-3 ${isRTL ? "items-end text-right" : ""}`}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -104,7 +109,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-6 py-3 rounded-full font-medium transition-colors duration-200 text-center"
               >
-                Sipariş Ver
+                {t("common.order")}
               </a>
             </div>
           </div>

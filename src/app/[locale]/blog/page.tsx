@@ -1,24 +1,58 @@
-import { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts, blogCategories } from "@/data/blog";
-
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Geleneksel Türk tatlıları hakkında tarifler, hikayeler ve ipuçları.",
-};
+import { useLocale } from "@/components/LocaleProvider";
 
 export default function BlogPage() {
+  const { locale, t, isRTL } = useLocale();
+
+  const texts = {
+    tr: {
+      pageTitle: "Blog",
+      pageSubtitle: "Geleneksel Türk tatlıları hakkında tarifler, hikayeler ve ipuçları",
+      readTime: "dk okuma",
+      readMore: "Devamını Oku",
+      newsletterTitle: "Yeni İçeriklerden Haberdar Olun",
+      newsletterDesc: "En son tarifler, hikayeler ve özel teklifler için bültenimize abone olun",
+      emailPlaceholder: "E-posta adresiniz",
+      subscribe: "Abone Ol",
+    },
+    en: {
+      pageTitle: "Blog",
+      pageSubtitle: "Recipes, stories and tips about traditional Turkish desserts",
+      readTime: "min read",
+      readMore: "Read More",
+      newsletterTitle: "Stay Updated",
+      newsletterDesc: "Subscribe to our newsletter for the latest recipes, stories and special offers",
+      emailPlaceholder: "Your email address",
+      subscribe: "Subscribe",
+    },
+    ar: {
+      pageTitle: "المدونة",
+      pageSubtitle: "وصفات وقصص ونصائح حول الحلويات التركية التقليدية",
+      readTime: "دقيقة قراءة",
+      readMore: "اقرأ المزيد",
+      newsletterTitle: "ابق على اطلاع",
+      newsletterDesc: "اشترك في نشرتنا للحصول على أحدث الوصفات والقصص والعروض الخاصة",
+      emailPlaceholder: "بريدك الإلكتروني",
+      subscribe: "اشترك",
+    },
+  };
+
+  const content = texts[locale] || texts.tr;
+
   return (
     <>
       {/* Header */}
       <section className="bg-[var(--primary)] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${isRTL ? "rtl" : ""}`}>
           <h1 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-bold mb-4">
-            Blog
+            {content.pageTitle}
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Geleneksel Türk tatlıları hakkında tarifler, hikayeler ve ipuçları
+            {content.pageSubtitle}
           </p>
         </div>
       </section>
@@ -26,7 +60,7 @@ export default function BlogPage() {
       {/* Categories */}
       <section className="py-8 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className={`flex flex-wrap justify-center gap-3 ${isRTL ? "rtl" : ""}`}>
             {blogCategories.map((category) => (
               <button
                 key={category.id}
@@ -46,13 +80,13 @@ export default function BlogPage() {
       {/* Blog Posts */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${isRTL ? "rtl" : ""}`}>
             {blogPosts.map((post) => (
               <article
                 key={post.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
               >
-                <Link href={`/blog/${post.slug}`} className="block">
+                <Link href={`/${locale}/blog/${post.slug}`} className="block">
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.image}
@@ -61,7 +95,7 @@ export default function BlogPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute top-4 left-4">
+                    <div className={`absolute top-4 ${isRTL ? "right-4" : "left-4"}`}>
                       <span className="bg-[var(--accent)] text-white text-xs font-medium px-3 py-1 rounded-full">
                         {post.category}
                       </span>
@@ -70,11 +104,15 @@ export default function BlogPage() {
                 </Link>
                 <div className="p-6">
                   <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-                    <span>{new Date(post.date).toLocaleDateString("tr-TR")}</span>
+                    <span>
+                      {new Date(post.date).toLocaleDateString(
+                        locale === "ar" ? "ar-SA" : locale === "en" ? "en-US" : "tr-TR"
+                      )}
+                    </span>
                     <span>•</span>
-                    <span>{post.readTime} dk okuma</span>
+                    <span>{post.readTime} {content.readTime}</span>
                   </div>
-                  <Link href={`/blog/${post.slug}`}>
+                  <Link href={`/${locale}/blog/${post.slug}`}>
                     <h2 className="font-[family-name:var(--font-cormorant)] text-xl font-bold text-[var(--primary)] mb-2 hover:text-[var(--accent)] transition-colors">
                       {post.title}
                     </h2>
@@ -83,11 +121,11 @@ export default function BlogPage() {
                     {post.excerpt}
                   </p>
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/${locale}/blog/${post.slug}`}
                     className="text-[var(--accent)] font-medium text-sm inline-flex items-center gap-1 hover:gap-2 transition-all"
                   >
-                    Devamını Oku
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {content.readMore}
+                    <svg className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
@@ -100,24 +138,25 @@ export default function BlogPage() {
 
       {/* Newsletter */}
       <section className="py-16 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className={`max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${isRTL ? "rtl" : ""}`}>
           <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-[var(--primary)] mb-4">
-            Yeni İçeriklerden Haberdar Olun
+            {content.newsletterTitle}
           </h2>
           <p className="text-gray-600 mb-8">
-            En son tarifler, hikayeler ve özel teklifler için bültenimize abone olun
+            {content.newsletterDesc}
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form className={`flex flex-col sm:flex-row gap-3 max-w-md mx-auto ${isRTL ? "sm:flex-row-reverse" : ""}`}>
             <input
               type="email"
-              placeholder="E-posta adresiniz"
+              placeholder={content.emailPlaceholder}
               className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none"
+              dir={isRTL ? "rtl" : "ltr"}
             />
             <button
               type="submit"
               className="bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-3 rounded-full font-medium transition-colors"
             >
-              Abone Ol
+              {content.subscribe}
             </button>
           </form>
         </div>

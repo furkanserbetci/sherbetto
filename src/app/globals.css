@@ -148,3 +148,87 @@ html {
   background: var(--accent-soft);
   color: var(--primary);
 }
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl {
+  direction: rtl;
+}
+
+/* RTL-aware spacing utilities */
+[dir="rtl"] .space-x-4 > * + * {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-8 > * + * {
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-2 > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* RTL-aware flex utilities */
+[dir="rtl"] .space-x-reverse > * + * {
+  margin-left: 0 !important;
+}
+
+/* RTL-aware positioning */
+[dir="rtl"] .left-4 {
+  right: 1rem;
+  left: auto;
+}
+
+[dir="rtl"] .right-4 {
+  left: 1rem;
+  right: auto;
+}
+
+[dir="rtl"] .left-0 {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .right-0 {
+  left: 0;
+  right: auto;
+}
+
+/* RTL icon flip for directional icons */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* RTL-aware margins */
+[dir="rtl"] .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+[dir="rtl"] .ms-auto {
+  margin-right: auto;
+}
+
+[dir="rtl"] .me-auto {
+  margin-left: auto;
+}
+
+/* RTL-aware text alignment */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
