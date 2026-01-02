@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { products, Product } from "@/data/products";
+import { products, Product, getLocalizedText } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/LocaleProvider";
@@ -24,12 +24,12 @@ export default function SearchBar() {
     const searchQuery = query.toLowerCase().trim();
     const filtered = products.filter(
       (product) =>
-        product.name.toLowerCase().includes(searchQuery) ||
-        product.description.toLowerCase().includes(searchQuery) ||
+        getLocalizedText(product.name, locale).toLowerCase().includes(searchQuery) ||
+        getLocalizedText(product.description, locale).toLowerCase().includes(searchQuery) ||
         product.category.toLowerCase().includes(searchQuery)
     );
     setResults(filtered);
-  }, [query]);
+  }, [query, locale]);
 
   // Close on click outside
   useEffect(() => {
@@ -78,12 +78,12 @@ export default function SearchBar() {
       <button
         onClick={handleOpen}
         className="flex items-center gap-2 px-3 py-2 text-gray-500 hover:text-[var(--accent)] transition-colors"
-        aria-label="Ara"
+        aria-label={t("common.search")}
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-        <span className="hidden lg:inline text-sm">Ara</span>
+        <span className="hidden lg:inline text-sm">{t("common.search")}</span>
         <kbd className="hidden lg:inline-flex items-center gap-1 px-2 py-0.5 text-xs text-gray-400 bg-gray-100 rounded border border-gray-200">
           <span className="text-xs">⌘</span>K
         </kbd>
@@ -158,7 +158,7 @@ export default function SearchBar() {
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                           <Image
                             src={product.image}
-                            alt={product.name}
+                            alt={getLocalizedText(product.name, locale)}
                             fill
                             className="object-cover"
                             sizes="64px"
@@ -166,10 +166,10 @@ export default function SearchBar() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="font-medium text-[var(--primary)] truncate">
-                            {product.name}
+                            {getLocalizedText(product.name, locale)}
                           </h4>
                           <p className="text-sm text-gray-500 truncate">
-                            {product.description}
+                            {getLocalizedText(product.description, locale)}
                           </p>
                         </div>
                         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

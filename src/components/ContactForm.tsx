@@ -48,8 +48,8 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    const subject = `Sherbetto İletişim Formu - ${data.name}`;
-    const body = `Ad: ${data.name}\nTelefon: ${data.phone}${data.email ? `\nE-posta: ${data.email}` : ""}\n\nMesaj:\n${data.message}`;
+    const subject = `${t("contact.emailSubject")} - ${data.name}`;
+    const body = `${t("contact.emailBodyName")}: ${data.name}\n${t("contact.emailBodyPhone")}: ${data.phone}${data.email ? `\n${t("contact.emailBodyEmail")}: ${data.email}` : ""}\n\n${t("contact.emailBodyMessage")}:\n${data.message}`;
 
     window.location.href = `mailto:sherbettokunefe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 

@@ -163,7 +163,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[var(--primary)] mb-1">{content.address}</h3>
-                    <p className="text-gray-600">Mersin, Türkiye</p>
+                    <p className="text-gray-600">{t("contact.address")}</p>
                     <p className="text-sm text-[var(--accent)]">{content.addressDesc}</p>
                   </div>
                 </a>

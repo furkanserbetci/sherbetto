@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/data/products";
+import { Product, getLocalizedText } from "@/data/products";
 import { useLocale } from "@/components/LocaleProvider";
 
 interface ProductActionsProps {
@@ -8,8 +8,9 @@ interface ProductActionsProps {
 }
 
 export default function ProductActions({ product }: ProductActionsProps) {
-  const { t } = useLocale();
-  const whatsappMessage = `${t("whatsapp.greeting")} "${product.name}" ${t("whatsapp.infoMessage")}`;
+  const { t, locale } = useLocale();
+  const productName = getLocalizedText(product.name, locale);
+  const whatsappMessage = `${t("whatsapp.greeting")} "${productName}" ${t("whatsapp.infoMessage")}`;
   const whatsappLink = `https://wa.me/905384507730?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (

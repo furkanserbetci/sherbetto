@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts, blogCategories } from "@/data/blog";
+import { blogPosts, blogCategories, getLocalizedBlogText } from "@/data/blog";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function BlogPage() {
@@ -70,7 +70,7 @@ export default function BlogPage() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
-                {category.name}
+                {getLocalizedBlogText(category.name, locale)}
               </button>
             ))}
           </div>
@@ -90,14 +90,14 @@ export default function BlogPage() {
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.image}
-                      alt={post.title}
+                      alt={getLocalizedBlogText(post.title, locale)}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className={`absolute top-4 ${isRTL ? "right-4" : "left-4"}`}>
                       <span className="bg-[var(--accent)] text-white text-xs font-medium px-3 py-1 rounded-full">
-                        {post.category}
+                        {getLocalizedBlogText(post.category, locale)}
                       </span>
                     </div>
                   </div>
@@ -114,11 +114,11 @@ export default function BlogPage() {
                   </div>
                   <Link href={`/${locale}/blog/${post.slug}`}>
                     <h2 className="font-[family-name:var(--font-cormorant)] text-xl font-bold text-[var(--primary)] mb-2 hover:text-[var(--accent)] transition-colors">
-                      {post.title}
+                      {getLocalizedBlogText(post.title, locale)}
                     </h2>
                   </Link>
                   <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-                    {post.excerpt}
+                    {getLocalizedBlogText(post.excerpt, locale)}
                   </p>
                   <Link
                     href={`/${locale}/blog/${post.slug}`}

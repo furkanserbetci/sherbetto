@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/data/products";
+import { Product, getLocalizedText } from "@/data/products";
 import { useLocale } from "@/components/LocaleProvider";
 
 interface ProductCardProps {
@@ -11,7 +11,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { locale, t } = useLocale();
-  const whatsappMessage = `${t("whatsapp.greeting")} ${product.name} ${t("whatsapp.infoMessage")}`;
+  const productName = getLocalizedText(product.name, locale);
+  const productDescription = getLocalizedText(product.description, locale);
+  const whatsappMessage = `${t("whatsapp.greeting")} ${productName} ${t("whatsapp.infoMessage")}`;
   const whatsappLink = `https://wa.me/905384507730?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -20,7 +22,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/${locale}/products/${product.id}`} className="block relative h-56 overflow-hidden bg-gray-100">
         <Image
           src={product.image}
-          alt={product.name}
+          alt={productName}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -36,11 +38,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-6">
         <Link href={`/${locale}/products/${product.id}`}>
           <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold text-[var(--primary)] mb-2 tracking-tight hover:text-[var(--accent)] transition-colors">
-            {product.name}
+            {productName}
           </h3>
         </Link>
         <p className="text-[var(--foreground-muted)] text-sm mb-3 line-clamp-2 leading-relaxed">
-          {product.description}
+          {productDescription}
         </p>
 
         {/* CTA */}

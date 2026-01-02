@@ -30,7 +30,7 @@ export default function AdminProductsPage() {
   }
 
   const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = product.name.tr.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -102,16 +102,16 @@ export default function AdminProductsPage() {
                       <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                         <Image
                           src={product.image}
-                          alt={product.name}
+                          alt={product.name.tr}
                           fill
                           className="object-cover"
                           sizes="48px"
                         />
                       </div>
                       <div>
-                        <p className="font-medium text-gray-800">{product.name}</p>
+                        <p className="font-medium text-gray-800">{product.name.tr}</p>
                         <p className="text-sm text-gray-500 line-clamp-1 max-w-xs">
-                          {product.description}
+                          {product.description.tr}
                         </p>
                       </div>
                     </div>
@@ -122,7 +122,7 @@ export default function AdminProductsPage() {
                     </span>
                   </td>
                   <td className="px-6 py-4 font-medium text-gray-800">
-                    {product.price}₺ / {product.unit}
+                    {product.price}₺ / {product.unit.tr}
                   </td>
                   <td className="px-6 py-4">
                     {product.featured ? (

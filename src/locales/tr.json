@@ -68,7 +68,13 @@
     "send": "Mesaj Gönder",
     "success": "Mesajınız gönderildi!",
     "optional": "opsiyonel",
-    "sending": "Gönderiliyor..."
+    "sending": "Gönderiliyor...",
+    "emailSubject": "Sherbetto İletişim Formu",
+    "emailBodyName": "Ad",
+    "emailBodyPhone": "Telefon",
+    "emailBodyEmail": "E-posta",
+    "emailBodyMessage": "Mesaj",
+    "address": "Mersin, Türkiye"
   },
   "footer": {
     "description": "Geleneksel Türk tatlılarının en lezzetli adresi",

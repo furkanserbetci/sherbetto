@@ -68,7 +68,13 @@
     "send": "إرسال الرسالة",
     "success": "تم إرسال رسالتك!",
     "optional": "اختياري",
-    "sending": "جاري الإرسال..."
+    "sending": "جاري الإرسال...",
+    "emailSubject": "نموذج الاتصال - Sherbetto",
+    "emailBodyName": "الاسم",
+    "emailBodyPhone": "الهاتف",
+    "emailBodyEmail": "البريد الإلكتروني",
+    "emailBodyMessage": "الرسالة",
+    "address": "مرسين، تركيا"
   },
   "footer": {
     "description": "الوجهة الأشهى للحلويات التركية التقليدية",

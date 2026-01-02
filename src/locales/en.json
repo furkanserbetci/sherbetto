@@ -68,7 +68,13 @@
     "send": "Send Message",
     "success": "Your message has been sent!",
     "optional": "optional",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "emailSubject": "Sherbetto Contact Form",
+    "emailBodyName": "Name",
+    "emailBodyPhone": "Phone",
+    "emailBodyEmail": "Email",
+    "emailBodyMessage": "Message",
+    "address": "Mersin, Turkey"
   },
   "footer": {
     "description": "The most delicious destination for traditional Turkish desserts",
