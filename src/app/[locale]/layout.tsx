@@ -199,42 +199,20 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
-    <html lang={locale} dir={dir}>
-      <head>
-        <link
-          rel="icon"
-          href="/favicon.png?v=3"
-          type="image/png"
-          sizes="512x512"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Sherbetto" />
-        <link rel="alternate" hrefLang="tr" href={`${siteUrl}/tr`} />
-        <link rel="alternate" hrefLang="en" href={`${siteUrl}/en`} />
-        <link rel="alternate" hrefLang="ar" href={`${siteUrl}/ar`} />
-        <link rel="alternate" hrefLang="x-default" href={`${siteUrl}/tr`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Analytics />
-      </head>
-      <body
-        className={`${inter.variable} ${cormorant.variable} ${alexBrush.variable} antialiased`}
-      >
-        <LocaleProvider locale={locale as Locale} dictionary={dictionary}>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-          <CartDrawer />
-        </LocaleProvider>
-        <ServiceWorkerRegistration />
-        <PageTracker />
-      </body>
-    </html>
+    <div dir={dir} className={`${inter.variable} ${cormorant.variable} ${alexBrush.variable} antialiased`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <LocaleProvider locale={locale as Locale} dictionary={dictionary}>
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        <WhatsAppButton />
+        <CartDrawer />
+      </LocaleProvider>
+      <ServiceWorkerRegistration />
+      <PageTracker />
+    </div>
   );
 }
