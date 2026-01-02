@@ -4,32 +4,39 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useLocale } from "@/components/LocaleProvider";
 
-// Validation schema
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Ad en az 2 karakter olmalıdır")
-    .max(50, "Ad en fazla 50 karakter olabilir"),
-  phone: z
-    .string()
-    .min(10, "Geçerli bir telefon numarası girin")
-    .regex(/^[0-9+\s()-]+$/, "Geçerli bir telefon numarası girin"),
-  email: z
-    .string()
-    .email("Geçerli bir e-posta adresi girin")
-    .optional()
-    .or(z.literal("")),
-  message: z
-    .string()
-    .min(10, "Mesaj en az 10 karakter olmalıdır")
-    .max(500, "Mesaj en fazla 500 karakter olabilir"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+type ContactFormData = {
+  name: string;
+  phone: string;
+  email?: string;
+  message: string;
+};
 
 export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
+  const { t } = useLocale();
+
+  // Validation schema with translations
+  const contactSchema = z.object({
+    name: z
+      .string()
+      .min(2, t("validation.nameMin"))
+      .max(50, t("validation.nameMax")),
+    phone: z
+      .string()
+      .min(10, t("validation.phoneInvalid"))
+      .regex(/^[0-9+\s()-]+$/, t("validation.phoneInvalid")),
+    email: z
+      .string()
+      .email(t("validation.emailInvalid"))
+      .optional()
+      .or(z.literal("")),
+    message: z
+      .string()
+      .min(10, t("validation.messageMin"))
+      .max(500, t("validation.messageMax")),
+  });
 
   const {
     register,
@@ -57,7 +64,7 @@ export default function ContactForm() {
         {/* Name */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-            Adınız Soyadınız *
+            {t("contact.name")} *
           </label>
           <input
             type="text"
@@ -66,7 +73,7 @@ export default function ContactForm() {
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
               errors.name ? "border-red-500" : "border-gray-300"
             }`}
-            placeholder="Adınız Soyadınız"
+            placeholder={t("contact.name")}
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
@@ -76,7 +83,7 @@ export default function ContactForm() {
         {/* Phone */}
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Telefon *
+            {t("contact.phone")} *
           </label>
           <input
             type="tel"
@@ -85,7 +92,7 @@ export default function ContactForm() {
             className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
               errors.phone ? "border-red-500" : "border-gray-300"
             }`}
-            placeholder="Telefon numaranız"
+            placeholder={t("contact.phone")}
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
@@ -96,7 +103,7 @@ export default function ContactForm() {
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          E-posta (opsiyonel)
+          {t("contact.email")} ({t("contact.optional")})
         </label>
         <input
           type="email"
@@ -105,7 +112,7 @@ export default function ContactForm() {
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all ${
             errors.email ? "border-red-500" : "border-gray-300"
           }`}
-          placeholder="E-posta adresiniz"
+          placeholder={t("contact.email")}
         />
         {errors.email && (
           <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
@@ -115,7 +122,7 @@ export default function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Mesajınız *
+          {t("contact.message")} *
         </label>
         <textarea
           id="message"
@@ -124,7 +131,7 @@ export default function ContactForm() {
           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all resize-none ${
             errors.message ? "border-red-500" : "border-gray-300"
           }`}
-          placeholder="Mesajınız..."
+          placeholder={t("contact.message")}
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
@@ -155,14 +162,14 @@ export default function ContactForm() {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               />
             </svg>
-            Gönderiliyor...
+            {t("contact.sending")}
           </>
         ) : (
           <>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
             </svg>
-            Mesaj Gönder
+            {t("contact.send")}
           </>
         )}
       </button>
@@ -174,7 +181,7 @@ export default function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
           <p className="text-green-700 font-medium">
-            E-posta uygulamanız açıldı!
+            {t("contact.success")}
           </p>
         </div>
       )}

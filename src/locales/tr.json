@@ -12,6 +12,18 @@
     "readMore": "Devamını Oku",
     "viewAll": "Tümünü Görüntüle"
   },
+  "search": {
+    "placeholder": "Ürün ara... (örn: baklava, künefe)",
+    "popular": "Popüler aramalar:",
+    "noResults": "için sonuç bulunamadı",
+    "viewAll": "Tüm ürünleri görüntüle",
+    "products": "ürün"
+  },
+  "whatsapp": {
+    "orderMessage": "Merhaba! Sipariş vermek istiyorum:",
+    "infoMessage": "hakkında bilgi almak istiyorum.",
+    "greeting": "Merhaba!"
+  },
   "hero": {
     "badge": "Geleneksel Lezzetler",
     "title": "Doğallığın ve Kalitenin Lezzet Dokunuşu",

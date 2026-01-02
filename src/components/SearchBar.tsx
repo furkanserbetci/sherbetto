@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { products, Product } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "@/components/LocaleProvider";
 
 export default function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function SearchBar() {
   const [results, setResults] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLocale();
 
   // Search logic
   useEffect(() => {
@@ -106,7 +108,7 @@ export default function SearchBar() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Ürün ara... (örn: baklava, künefe)"
+                  placeholder={t("search.placeholder")}
                   className="flex-1 outline-none text-lg"
                 />
                 <button
@@ -124,9 +126,9 @@ export default function SearchBar() {
               <div className="max-h-96 overflow-y-auto">
                 {query.trim().length < 2 ? (
                   <div className="p-6 text-center text-gray-500">
-                    <p className="mb-2">Popüler aramalar:</p>
+                    <p className="mb-2">{t("search.popular")}</p>
                     <div className="flex flex-wrap justify-center gap-2">
-                      {["Baklava", "Künefe", "Kadayıf", "Katmer"].map((term) => (
+                      {[t("products.baklava"), t("products.kunefe"), t("products.kadayif")].map((term) => (
                         <button
                           key={term}
                           onClick={() => setQuery(term)}
@@ -142,14 +144,14 @@ export default function SearchBar() {
                     <svg className="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <p>&quot;{query}&quot; için sonuç bulunamadı</p>
+                    <p>&quot;{query}&quot; {t("search.noResults")}</p>
                   </div>
                 ) : (
                   <div className="divide-y">
                     {results.map((product) => (
                       <Link
                         key={product.id}
-                        href={`/urunler/${product.id}`}
+                        href={`/${locale}/products/${product.id}`}
                         onClick={handleResultClick}
                         className="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors"
                       >
@@ -183,11 +185,11 @@ export default function SearchBar() {
               {results.length > 0 && (
                 <div className="p-3 bg-gray-50 border-t text-center">
                   <Link
-                    href="/urunler"
+                    href={`/${locale}/products`}
                     onClick={handleResultClick}
                     className="text-sm text-[var(--accent)] hover:underline"
                   >
-                    Tüm ürünleri görüntüle ({products.length} ürün)
+                    {t("search.viewAll")} ({products.length} {t("search.products")})
                   </Link>
                 </div>
               )}

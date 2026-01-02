@@ -12,6 +12,18 @@
     "readMore": "Read More",
     "viewAll": "View All"
   },
+  "search": {
+    "placeholder": "Search products... (e.g., baklava, kunefe)",
+    "popular": "Popular searches:",
+    "noResults": "No results found for",
+    "viewAll": "View all products",
+    "products": "products"
+  },
+  "whatsapp": {
+    "orderMessage": "Hello! I would like to place an order:",
+    "infoMessage": "I would like to get information about",
+    "greeting": "Hello!"
+  },
   "hero": {
     "badge": "Traditional Flavors",
     "title": "The Taste of Nature and Quality",
