@@ -8,44 +8,6 @@ import { useLocale } from "./LocaleProvider";
 export default function Hero() {
   const { locale, t, isRTL } = useLocale();
 
-  const texts = {
-    tr: {
-      badge: "Geleneksel Lezzetler",
-      titlePart1: "Doğallığın ve Kalitenin",
-      titlePart2: "Lezzet Dokunuşu",
-      subtitle: "En kaliteli malzemelerle, geleneksel tariflerle hazırlanan Türk tatlıları. Baklava, künefe, kadayıf ve daha fazlası.",
-      explore: "Ürünleri İncele",
-      order: "Hemen Sipariş Ver",
-      stat1: "Yıllık Deneyim",
-      stat2: "Ürün Çeşidi",
-      stat3: "Mutlu Müşteri",
-    },
-    en: {
-      badge: "Traditional Flavors",
-      titlePart1: "The Taste of Nature",
-      titlePart2: "and Quality",
-      subtitle: "Turkish desserts prepared with the finest ingredients and traditional recipes. Baklava, künefe, kadayıf and more.",
-      explore: "Explore Products",
-      order: "Order Now",
-      stat1: "Years Experience",
-      stat2: "Product Varieties",
-      stat3: "Happy Customers",
-    },
-    ar: {
-      badge: "النكهات التقليدية",
-      titlePart1: "لمسة الطبيعة",
-      titlePart2: "والجودة",
-      subtitle: "حلويات تركية محضرة بأجود المكونات والوصفات التقليدية. بقلاوة، كنافة، قطايف والمزيد.",
-      explore: "استكشف المنتجات",
-      order: "اطلب الآن",
-      stat1: "سنوات الخبرة",
-      stat2: "تشكيلة منتجات",
-      stat3: "عميل سعيد",
-    },
-  };
-
-  const content = texts[locale] || texts.tr;
-
   return (
     <section className="relative bg-[var(--primary)] text-white overflow-hidden min-h-[90vh] flex items-center">
       {/* Background Image with Slow Zoom */}
@@ -102,7 +64,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="inline-block border border-[var(--accent)]/40 text-[var(--accent-light)] text-xs font-medium px-5 py-2 rounded-full mb-8 uppercase tracking-[0.2em]"
           >
-            {content.badge}
+            {t("hero.badge")}
           </motion.span>
 
           {/* Main Heading */}
@@ -112,7 +74,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl lg:text-7xl font-medium mb-8 leading-[1.1] tracking-tight"
           >
-            {content.titlePart1}{" "}
+            {t("hero.titlePart1")}{" "}
             <motion.span
               className="text-[var(--accent)] inline-block"
               animate={{
@@ -128,7 +90,7 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
             >
-              {content.titlePart2}
+              {t("hero.titlePart2")}
             </motion.span>
           </motion.h1>
 
@@ -139,7 +101,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
           >
-            {content.subtitle}
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -154,7 +116,7 @@ export default function Hero() {
                 href={`/${locale}/products`}
                 className="inline-block bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-10 py-4 rounded-full font-medium text-sm uppercase tracking-wider transition-all duration-300"
               >
-                {content.explore}
+                {t("hero.exploreProducts")}
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -164,7 +126,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="inline-block bg-transparent border border-white/30 hover:bg-white hover:text-[var(--primary)] text-white px-10 py-4 rounded-full font-medium text-sm uppercase tracking-wider transition-all duration-300"
               >
-                {content.order}
+                {t("hero.orderNow")}
               </a>
             </motion.div>
           </motion.div>
@@ -177,9 +139,9 @@ export default function Hero() {
             className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto"
           >
             {[
-              { number: "10+", label: content.stat1 },
-              { number: "50+", label: content.stat2 },
-              { number: "10K+", label: content.stat3 },
+              { number: "10+", label: t("hero.stats.experience") },
+              { number: "50+", label: t("hero.stats.products") },
+              { number: "10K+", label: t("hero.stats.customers") },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

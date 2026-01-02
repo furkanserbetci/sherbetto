@@ -8,6 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Analytics from "@/components/Analytics";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import PageTracker from "@/components/PageTracker";
+import LanguageUpdater from "@/components/LanguageUpdater";
 import { LocaleProvider } from "@/components/LocaleProvider";
 
 const inter = Inter({
@@ -204,6 +205,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <LocaleProvider locale={locale as Locale} dictionary={dictionary}>
+        <LanguageUpdater locale={locale as Locale} />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts, blogCategories, getLocalizedBlogText } from "@/data/blog";
@@ -7,6 +8,8 @@ import { useLocale } from "@/components/LocaleProvider";
 
 export default function BlogPage() {
   const { locale, t, isRTL } = useLocale();
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const texts = {
     tr: {
@@ -18,6 +21,7 @@ export default function BlogPage() {
       newsletterDesc: "En son tarifler, hikayeler ve özel teklifler için bültenimize abone olun",
       emailPlaceholder: "E-posta adresiniz",
       subscribe: "Abone Ol",
+      subscribeSuccess: "Teşekkürler! Bültenimize başarıyla abone oldunuz.",
     },
     en: {
       pageTitle: "Blog",
@@ -28,6 +32,7 @@ export default function BlogPage() {
       newsletterDesc: "Subscribe to our newsletter for the latest recipes, stories and special offers",
       emailPlaceholder: "Your email address",
       subscribe: "Subscribe",
+      subscribeSuccess: "Thank you! You have successfully subscribed to our newsletter.",
     },
     ar: {
       pageTitle: "المدونة",
@@ -38,10 +43,25 @@ export default function BlogPage() {
       newsletterDesc: "اشترك في نشرتنا للحصول على أحدث الوصفات والقصص والعروض الخاصة",
       emailPlaceholder: "بريدك الإلكتروني",
       subscribe: "اشترك",
+      subscribeSuccess: "شكراً لك! لقد اشتركت بنجاح في نشرتنا الإخبارية.",
     },
   };
 
   const content = texts[locale] || texts.tr;
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Open email client with subscription request
+      const subject = encodeURIComponent("Newsletter Subscription - Sherbetto");
+      const body = encodeURIComponent(`I would like to subscribe to the Sherbetto newsletter.\n\nEmail: ${email}`);
+      window.location.href = `mailto:sherbettokunefe@gmail.com?subject=${subject}&body=${body}`;
+
+      setIsSubscribed(true);
+      setEmail("");
+      setTimeout(() => setIsSubscribed(false), 5000);
+    }
+  };
 
   return (
     <>
@@ -145,20 +165,38 @@ export default function BlogPage() {
           <p className="text-gray-600 mb-8">
             {content.newsletterDesc}
           </p>
-          <form className={`flex flex-col sm:flex-row gap-3 max-w-md mx-auto ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-            <input
-              type="email"
-              placeholder={content.emailPlaceholder}
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none"
-              dir={isRTL ? "rtl" : "ltr"}
-            />
-            <button
-              type="submit"
-              className="bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-3 rounded-full font-medium transition-colors"
+
+          {isSubscribed ? (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-center gap-3">
+              <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <p className="text-green-700 font-medium">
+                {content.subscribeSuccess}
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubscribe}
+              className={`flex flex-col sm:flex-row gap-3 max-w-md mx-auto ${isRTL ? "sm:flex-row-reverse" : ""}`}
             >
-              {content.subscribe}
-            </button>
-          </form>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={content.emailPlaceholder}
+                required
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none"
+                dir={isRTL ? "rtl" : "ltr"}
+              />
+              <button
+                type="submit"
+                className="bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-3 rounded-full font-medium transition-colors"
+              >
+                {content.subscribe}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </>

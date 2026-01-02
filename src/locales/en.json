@@ -27,7 +27,9 @@
   "hero": {
     "badge": "Traditional Flavors",
     "title": "The Taste of Nature and Quality",
-    "subtitle": "Traditional Turkish desserts, prepared with the freshest ingredients just for you",
+    "titlePart1": "The Taste of Nature",
+    "titlePart2": "and Quality",
+    "subtitle": "Turkish desserts prepared with the finest ingredients and traditional recipes. Baklava, künefe, kadayıf and more.",
     "exploreProducts": "Explore Products",
     "orderNow": "Order Now",
     "stats": {
@@ -38,6 +40,7 @@
   },
   "products": {
     "title": "Our Products",
+    "subtitle": "All our desserts prepared with the finest ingredients and traditional recipes",
     "featured": "Featured Products",
     "all": "All",
     "baklava": "Baklava",
@@ -46,7 +49,9 @@
     "other": "Other",
     "addToCart": "Add to Cart",
     "details": "Details",
-    "noProducts": "No products found in this category"
+    "noProducts": "No products found in this category",
+    "orderQuestion": "Would You Like to Order?",
+    "orderDescription": "You can quickly place your order via WhatsApp. Call us for any questions."
   },
   "cart": {
     "title": "Your Cart",
@@ -100,6 +105,14 @@
   "cta": {
     "title": "Call Us for Orders",
     "subtitle": "You can easily order via WhatsApp and ask your questions."
+  },
+  "homepage": {
+    "productsSubtitle": "Our most popular and favorite products"
+  },
+  "social": {
+    "badge": "Social Media",
+    "title": "Follow Us on Instagram",
+    "subtitle": "For our latest products and offers @sherbettokunefe"
   },
   "validation": {
     "nameMin": "Name must be at least 2 characters",

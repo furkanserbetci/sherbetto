@@ -27,8 +27,10 @@
   "hero": {
     "badge": "Geleneksel Lezzetler",
     "title": "Doğallığın ve Kalitenin Lezzet Dokunuşu",
-    "subtitle": "Geleneksel Türk tatlıları, en taze malzemelerle sizin için hazırlanıyor",
-    "exploreProducts": "Ürünleri Keşfet",
+    "titlePart1": "Doğallığın ve Kalitenin",
+    "titlePart2": "Lezzet Dokunuşu",
+    "subtitle": "En kaliteli malzemelerle, geleneksel tariflerle hazırlanan Türk tatlıları. Baklava, künefe, kadayıf ve daha fazlası.",
+    "exploreProducts": "Ürünleri İncele",
     "orderNow": "Hemen Sipariş Ver",
     "stats": {
       "experience": "Yıllık Deneyim",
@@ -38,6 +40,7 @@
   },
   "products": {
     "title": "Ürünlerimiz",
+    "subtitle": "Geleneksel tariflerle, en kaliteli malzemelerle hazırlanan tüm tatlılarımız",
     "featured": "Öne Çıkan Ürünlerimiz",
     "all": "Tümü",
     "baklava": "Baklava",
@@ -46,7 +49,9 @@
     "other": "Diğer",
     "addToCart": "Sepete Ekle",
     "details": "Detaylar",
-    "noProducts": "Bu kategoride ürün bulunamadı"
+    "noProducts": "Bu kategoride ürün bulunamadı",
+    "orderQuestion": "Sipariş Vermek İster Misiniz?",
+    "orderDescription": "WhatsApp üzerinden hızlıca siparişinizi oluşturabilirsiniz. Sorularınız için bizi arayın."
   },
   "cart": {
     "title": "Sepetiniz",
@@ -100,6 +105,14 @@
   "cta": {
     "title": "Siparişleriniz İçin Bizi Arayın",
     "subtitle": "WhatsApp üzerinden kolayca sipariş verebilir, sorularınızı sorabilirsiniz."
+  },
+  "homepage": {
+    "productsSubtitle": "En çok tercih edilen, müşterilerimizin favorisi olan özel lezzetlerimiz"
+  },
+  "social": {
+    "badge": "Sosyal Medya",
+    "title": "Bizi Instagram'da Takip Edin",
+    "subtitle": "En son ürünlerimiz ve kampanyalarımız için @sherbettokunefe"
   },
   "validation": {
     "nameMin": "İsim en az 2 karakter olmalıdır",
