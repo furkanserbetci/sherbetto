@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { products } from "@/data/products";
 
@@ -19,17 +20,7 @@ export default function AdminDashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("adminLoggedIn");
-    if (!isLoggedIn) {
-      router.push("/admin");
-    } else {
-      setIsLoading(false);
-      fetchAnalytics();
-    }
-  }, [router]);
-
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = useCallback(async () => {
     try {
       const res = await fetch("/api/analytics/stats");
       if (res.ok) {
@@ -39,7 +30,20 @@ export default function AdminDashboard() {
     } catch (error) {
       console.error("Failed to fetch analytics:", error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const initPage = () => {
+      const isLoggedIn = localStorage.getItem("adminLoggedIn");
+      if (!isLoggedIn) {
+        router.push("/admin");
+        return;
+      }
+      setIsLoading(false);
+      fetchAnalytics();
+    };
+    initPage();
+  }, [router, fetchAnalytics]);
 
   if (isLoading) {
     return (
@@ -200,7 +204,7 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-xl p-6 shadow-sm mb-8">
           <h2 className="text-xl font-bold text-gray-800 mb-4">Hızlı İşlemler</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a
+            <Link
               href="/admin/urunler"
               className="flex items-center gap-3 p-4 border rounded-lg hover:border-[var(--accent)] transition-colors"
             >
@@ -211,8 +215,8 @@ export default function AdminDashboard() {
                 <p className="font-medium text-gray-800">Ürünler ({products.length})</p>
                 <p className="text-sm text-gray-500">Ürün kataloğunu yönet</p>
               </div>
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admin/siparisler"
               className="flex items-center gap-3 p-4 border rounded-lg hover:border-[var(--accent)] transition-colors"
             >
@@ -223,7 +227,7 @@ export default function AdminDashboard() {
                 <p className="font-medium text-gray-800">Siparişler</p>
                 <p className="text-sm text-gray-500">Siparişleri görüntüle</p>
               </div>
-            </a>
+            </Link>
             <a
               href="/"
               target="_blank"

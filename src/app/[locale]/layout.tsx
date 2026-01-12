@@ -5,7 +5,6 @@ import { Locale, locales, isRTL, getDictionary } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Analytics from "@/components/Analytics";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import PageTracker from "@/components/PageTracker";
 import LanguageUpdater from "@/components/LanguageUpdater";

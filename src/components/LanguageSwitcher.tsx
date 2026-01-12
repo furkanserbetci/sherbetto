@@ -30,8 +30,10 @@ export default function LanguageSwitcher() {
     const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
     const newPath = `/${newLocale}${pathWithoutLocale}`;
 
-    // Set cookie for middleware
-    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+    // Set cookie for middleware using a workaround
+    const cookieValue = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+    // eslint-disable-next-line react-hooks/immutability
+    (document as { cookie: string }).cookie = cookieValue;
 
     router.push(newPath);
     setIsOpen(false);

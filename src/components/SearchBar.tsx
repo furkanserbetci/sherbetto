@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { products, Product, getLocalizedText } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,26 +9,23 @@ import { useLocale } from "@/components/LocaleProvider";
 export default function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { locale, t } = useLocale();
 
-  // Search logic
-  useEffect(() => {
+  // Search logic using useMemo
+  const results: Product[] = useMemo(() => {
     if (query.trim().length < 2) {
-      setResults([]);
-      return;
+      return [];
     }
 
     const searchQuery = query.toLowerCase().trim();
-    const filtered = products.filter(
+    return products.filter(
       (product) =>
         getLocalizedText(product.name, locale).toLowerCase().includes(searchQuery) ||
         getLocalizedText(product.description, locale).toLowerCase().includes(searchQuery) ||
         product.category.toLowerCase().includes(searchQuery)
     );
-    setResults(filtered);
   }, [query, locale]);
 
   // Close on click outside

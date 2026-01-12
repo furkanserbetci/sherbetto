@@ -51,7 +51,10 @@ export default function ContactForm() {
     const subject = `${t("contact.emailSubject")} - ${data.name}`;
     const body = `${t("contact.emailBodyName")}: ${data.name}\n${t("contact.emailBodyPhone")}: ${data.phone}${data.email ? `\n${t("contact.emailBodyEmail")}: ${data.email}` : ""}\n\n${t("contact.emailBodyMessage")}:\n${data.message}`;
 
-    window.location.href = `mailto:sherbettokunefe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:sherbettokunefe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const link = document.createElement("a");
+    link.href = mailtoUrl;
+    link.click();
 
     setIsSuccess(true);
     reset();

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import { products, categories, Product } from "@/data/products";
+import { products, categories } from "@/data/products";
 
 export default function AdminProductsPage() {
   const router = useRouter();
@@ -13,12 +13,15 @@ export default function AdminProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("adminLoggedIn");
-    if (!isLoggedIn) {
-      router.push("/admin");
-    } else {
+    const checkAuth = () => {
+      const isLoggedIn = localStorage.getItem("adminLoggedIn");
+      if (!isLoggedIn) {
+        router.push("/admin");
+        return;
+      }
       setIsLoading(false);
-    }
+    };
+    checkAuth();
   }, [router]);
 
   if (isLoading) {

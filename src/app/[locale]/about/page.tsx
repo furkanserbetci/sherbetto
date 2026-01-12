@@ -3,7 +3,7 @@
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function AboutPage() {
-  const { locale, t, isRTL } = useLocale();
+  const { locale, isRTL } = useLocale();
 
   const texts = {
     tr: {

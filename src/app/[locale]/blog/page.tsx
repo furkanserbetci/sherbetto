@@ -7,7 +7,7 @@ import { blogPosts, blogCategories, getLocalizedBlogText } from "@/data/blog";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function BlogPage() {
-  const { locale, t, isRTL } = useLocale();
+  const { locale, isRTL } = useLocale();
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 

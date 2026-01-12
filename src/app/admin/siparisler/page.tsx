@@ -9,12 +9,15 @@ export default function AdminOrdersPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("adminLoggedIn");
-    if (!isLoggedIn) {
-      router.push("/admin");
-    } else {
+    const checkAuth = () => {
+      const isLoggedIn = localStorage.getItem("adminLoggedIn");
+      if (!isLoggedIn) {
+        router.push("/admin");
+        return;
+      }
       setIsLoading(false);
-    }
+    };
+    checkAuth();
   }, [router]);
 
   if (isLoading) {
